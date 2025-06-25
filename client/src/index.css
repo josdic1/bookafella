@@ -181,14 +181,7 @@ nav a {
 nav a.active {
   color: var(--primary-color);
 }
-.btn-primary {
-  background: var(--primary-color);
-  color: #fff;
-}
-.btn-secondary {
-  background: var(--secondary-color);
-  color: #fff;
-}
+
 
 
 /* Loader */
@@ -315,6 +308,41 @@ nav a.active {
   background: #2C8C47;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+.btn-danger {
+  background: #EA4335;
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #C33D2E;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-warning {
+  background: #FBBC05;
+  color: #000;
+}
+.btn-warning:hover {
+  background: #E0A800;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-info {
+  background: #00B8D9;
+  color: #fff;
+}
+.btn-info:hover {
+  background: #0097B2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark {
+  background: #333;
+  color: #fff;
+}
+.btn-dark:hover {
+  background: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 /* Utility */
 h1, h2, p {
@@ -324,5 +352,42 @@ h1, h2, p {
 body {
   background: #F5F5F5;
   font-family: 'Roboto', sans-serif;
+}
+
+* Reservation Sections */
+.reservation-section {
+  margin-bottom: var(--spacing-xl); /* Extra spacing between Today and Upcoming */
+}
+
+.reservation-section h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-m);
+  border-bottom: 2px solid var(--primary-light); /* Subtle underline for section headers */
+  padding-bottom: var(--spacing-xs);
+}
+
+/* Ensure tables have consistent spacing */
+.reservation-section table {
+  background: var(--background);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Button alignment in table cells */
+td button {
+  margin-right: var(--spacing-s); /* Space between buttons in the Actions column */
+}
+
+/* Responsive table adjustments */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.9rem; /* Slightly smaller text on mobile */
+  }
+  td button {
+    padding: var(--spacing-xs) var(--spacing-s); /* Smaller buttons on mobile */
+    font-size: 0.85rem;
+  }
 }
 

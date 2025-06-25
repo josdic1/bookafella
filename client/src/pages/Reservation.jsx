@@ -68,8 +68,8 @@ function Reservation() {
             {foundReservation.notes && (
                 <p><strong>Notes:</strong> {foundReservation.notes}</p>
             )}
-            <button onClick={() => navigate(`/edit/reservation/${foundReservation.id}`)}>Edit</button>
-            <button onClick={() => navigate('/reservationlist')}>Back to List</button>
+            <button className="btn btn-primary" type="button" onClick={() => navigate(`/edit/reservation/${foundReservation.id}`)}>Edit</button>
+            <button className="btn btn-light" type="button" onClick={() => navigate('/reservationlist')}>Back to List</button>
         </div>
     );
 }

@@ -58,7 +58,7 @@
       "member_id": "d5tg",
       "member": "demi",
       "room": "c",
-      "arrival": "2025-05-27T12:15",
+      "arrival": "2026-05-27T16:15",
       "guests": 3,
       "notes": "Birthday",
       "guest_array": [
@@ -144,6 +144,19 @@
         "demi"
       ],
       "notes": "pizza party"
+    },
+    {
+      "id": "5d35",
+      "member_id": "y765",
+      "member": "jill",
+      "room": "e",
+      "arrival": "2025-07-30T18:30",
+      "guests": 2,
+      "guest_array": [
+        "anne",
+        "becca"
+      ],
+      "notes": "No menus"
     }
   ],
   "members": [

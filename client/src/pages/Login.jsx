@@ -66,8 +66,8 @@ function Login() {
                 <label htmlFor="member">🔒 </label>
                 <input type="text" name="member" id="member" onChange={onFormChange} value={formData.member} placeholder="User Login..." />
                 {/* Only show login button if a potential user is found */}
-                {potentialUser ? <button type="submit">Login</button> : <button type="button" disabled>Enter Username</button>}
-                <button type="button" onClick={onClear}> Clear </button>
+                {potentialUser ?    <button class="btn btn-success" type="submit">Login</button> :    <button class="btn btn-dark" disabled>Enter Username</button>}
+                <button class="btn btn-light" type="button" onClick={onClear}> Clear </button>
             </form>
         </>
     );

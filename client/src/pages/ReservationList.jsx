@@ -1,79 +1,128 @@
-// src/components/ReservationList.jsx (or wherever your Reservations list component is)
-
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import ReservationContext from "../contexts/ReservationContext";
-import CurrentUserContext from "../contexts/CurrentUserContext";// <-- Import this
-import Loader from "../components/Loader"; // Assuming you have a Loader
-import { useNavigate } from "react-router-dom"; // For potential navigation after actions
+import CurrentUserContext from "../contexts/CurrentUserContext";
+import ReservationCard from "../components/ReservationsCard";
+import Loader from "../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 function ReservationsList() {
-    const { reservations, loading, handleDelete } = useContext(ReservationContext);
-    const { currentUser } = useContext(CurrentUserContext); // <-- Get currentUser here
+  const { reservations, loading, handleDelete } = useContext(ReservationContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  // --- Defensive Loading Check ---
+  if (loading) {
+    return <Loader />;
+  }
 
-    // --- Defensive Loading Check ---
-    if (loading) {
-        return <Loader />;
-    }
+  // --- Determine Filtering Logic ---
+  const isAdmin = currentUser && currentUser.role === "admin";
+  const currentMemberId = currentUser ? currentUser.id : null;
 
-    // --- Determine Filtering Logic ---
-    const isAdmin = currentUser && currentUser.role === 'admin';
-    const currentMemberId = currentUser ? currentUser.id : null; // Get current user's ID
+  // Filter reservations based on role
+  const filteredReservations = isAdmin
+    ? reservations
+    : reservations.filter((res) => res.member_id === currentMemberId);
 
-    // Filter reservations based on role
-    const filteredReservations = isAdmin
-        ? reservations // If admin, show all reservations
-        : reservations.filter(res => res.member_id === currentMemberId); // If user, filter by their member_id
+  // --- Separate Reservations into Today, Upcoming, and Past ---
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Normalize to start of day
 
-    // Check if there are no reservations after filtering
-    if (filteredReservations.length === 0) {
-        return (
-            <div className="reservations-container">
-                <h2>{isAdmin ? "All Reservations" : "My Reservations"}</h2>
-                <p>{isAdmin ? "No reservations found in the system." : "You have no active reservations."}</p>
-                {!isAdmin && (
-                    <button onClick={() => navigate('/new/reservation')}>Make a New Reservation</button>
-                )}
-            </div>
-        );
-    }
+  const todayReservations = filteredReservations.filter((res) => {
+    const arrivalDate = new Date(res.arrival);
+    arrivalDate.setHours(0, 0, 0, 0);
+    return arrivalDate.getTime() === today.getTime();
+  });
 
+  const upcomingReservations = filteredReservations
+    .filter((res) => {
+      const arrivalDate = new Date(res.arrival);
+      arrivalDate.setHours(0, 0, 0, 0);
+      return arrivalDate.getTime() > today.getTime();
+    })
+    .sort((a, b) => new Date(a.arrival).getTime() - new Date(b.arrival).getTime()); // Sort from most recent to farthest
+
+  const pastReservations = filteredReservations
+    .filter((res) => {
+      const arrivalDate = new Date(res.arrival);
+      arrivalDate.setHours(0, 0, 0, 0);
+      return arrivalDate.getTime() < today.getTime();
+    })
+    .sort((a, b) => new Date(b.arrival).getTime() - new Date(a.arrival).getTime()); // Sort from most recent to oldest
+
+  // Check if there are no reservations after filtering
+  if (filteredReservations.length === 0) {
     return (
-        <div className="reservations-container">
-            <h2>{isAdmin ? "All Reservations" : "My Reservations"}</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>View</th>
-                        <th>Member</th>
-                        <th>Room</th>
-                        <th>Arrival</th>
-                        <th>Guests</th>
-                        <th>Notes</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredReservations.map(reservation => (
-                        <tr key={reservation.id}>
-                            <td> <button onClick={() => navigate(`/reservation/${reservation.id}`)}>View</button></td>
-                            <td>{reservation.member}</td>
-                            <td>{reservation.room}</td>
-                            <td>{new Date(reservation.arrival).toLocaleString()}</td>
-                            <td>{reservation.guests}</td>
-                            <td>{reservation.notes}</td>
-                            <td>
-                                <button onClick={() => navigate(`/edit/reservation/${reservation.id}`)}>Edit</button>
-                                <button onClick={() => handleDelete(reservation.id)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+      <div className="reservations-container">
+        <h2>{isAdmin ? "All Reservations" : "My Reservations"}</h2>
+        <p>
+          {isAdmin
+            ? "No reservations found in the system."
+            : "You have no active reservations."}
+        </p>
+        {!isAdmin && (
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate("/new/reservation")}
+          >
+            Make a New Reservation
+          </button>
+        )}
+      </div>
     );
+  }
+
+  // Common table rendering function
+  const renderTable = (reservations, title) => {
+    if (reservations.length === 0) return null;
+    return (
+      <div className="reservation-section">
+        <h3>{title}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Room</th>
+              <th>Arrival</th>
+              <th>Guests</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+        {reservations.map((reservation) => (
+  <ReservationCard
+    key={reservation.id}
+    reservation={reservation}
+    onListClick={(id, action) => {
+      if (action === "view") navigate(`/reservation/${id}`);
+      if (action === "edit") navigate(`/edit/reservation/${id}`);
+      if (action === "delete") handleDelete(id);
+    }}
+  />
+))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
+  return (
+    <div className="reservations-container">
+      <h2>{isAdmin ? "All Reservations" : "My Reservations"}</h2>
+      {renderTable(todayReservations, "Today")}
+      {renderTable(upcomingReservations, "Upcoming")}
+      {renderTable(pastReservations, "Past")}
+      {!isAdmin && (
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/new/reservation")}
+        >
+          Make a New Reservation
+        </button>
+      )}
+    </div>
+  );
 }
 
 export default ReservationsList;

@@ -45,8 +45,9 @@ function Dashboard() {
     // --- Render based on User Role ---
     return (
         <div className="dashboard-container"> {/* Main container for the dashboard content */}
-            <h1 className="text-primary-heading">Welcome back, {currentUser.member}</h1> {/* Main welcome heading */}
-
+     <h1 className="text-primary-heading">
+  Welcome back, {currentUser.member?.charAt(0).toUpperCase() + currentUser.member?.slice(1)}
+</h1>
             {isAdmin ? (
                 // ==== ADMIN DASHBOARD VIEW ====
                 <div className="admin-dashboard-content">
@@ -86,7 +87,7 @@ function Dashboard() {
                         <h3>Your Information:</h3>
                         <ul className="action-list">
                             <li>
-                                <button className="btn btn-secondary" onClick={() => navigate(`/edit/member/${currentMemberId}`)}>Edit My Profile</button>
+                                <button className="btn btn-warning" onClick={() => navigate(`/edit/member/${currentMemberId}`)}>Edit My Profile</button>
                                 {/* Role display - use a span for styling, not a p inside li */}
                                 <span className="text-secondary" style={{ marginLeft: '1rem' }}>Role: {currentUser.role}</span>
                             </li>
@@ -98,7 +99,7 @@ function Dashboard() {
                         <h3>Your Reservations:</h3>
                         <ul className="action-list">
                             <li><button className="btn btn-primary" onClick={() => navigate('/reservationlist')}>View My Reservations</button></li>
-                            <li><button className="btn btn-primary" onClick={() => navigate('/new/reservation')}>Make a New Reservation</button></li>
+                            <li><button className="btn btn-secondary" onClick={() => navigate('/new/reservation')}>Make a New Reservation</button></li>
                         </ul>
                         {/* Display a quick count of *their* reservations */}
                         <p className="reservation-count-summary">You have <strong>{reservations.filter(res => res.member_id === currentMemberId).length}</strong> active reservations.</p>
