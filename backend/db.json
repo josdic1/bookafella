@@ -1,4 +1,4 @@
-	{
+{
   "reservations": [
     {
       "id": "4rr6",
@@ -17,11 +17,13 @@
       "member_id": "3ed5",
       "member": "dorrie",
       "room": "a",
-      "arrival": "2025-06-25T02:01",
-      "guests": 1,
+      "arrival": "2025-07-30T17:00",
+      "guests": 3,
       "notes": "client dinner",
       "guest_array": [
-        "max; josh; darnell"
+        "max",
+        "josh",
+        "rosie"
       ]
     },
     {
@@ -82,9 +84,12 @@
       "member_id": "d5tg",
       "member": "demi",
       "room": "d",
-      "arrival": "2025-07-04T11:15",
-      "guests": 1,
-      "guest_array": "bobbi",
+      "arrival": "2025-07-04T15:15",
+      "guests": 2,
+      "guest_array": [
+        "bobbi",
+        "judah"
+      ],
       "notes": "Brunch"
     },
     {
@@ -119,10 +124,11 @@
       "member_id": "0b49",
       "member": "frank",
       "room": "b",
-      "arrival": "2025-06-25T02:04",
-      "guests": 3,
+      "arrival": "2025-07-27T21:15",
+      "guests": 2,
       "guest_array": [
-        "honey; ratty"
+        "honey",
+        "dan"
       ],
       "notes": "Vegan"
     },
@@ -131,10 +137,11 @@
       "member_id": "3ed5",
       "member": "dorrie",
       "room": "b",
-      "arrival": "2025-06-25T03:08",
+      "arrival": "2025-06-25T07:08",
       "guests": 2,
       "guest_array": [
-        "josh; demi"
+        "josh",
+        "demi"
       ],
       "notes": "pizza party"
     }
