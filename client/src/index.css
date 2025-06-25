@@ -391,3 +391,21 @@ td button {
   }
 }
 
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr !important;
+    padding: var(--spacing-s);
+  }
+
+  .card {
+    margin-bottom: var(--spacing-m);
+  }
+
+  .action-list li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

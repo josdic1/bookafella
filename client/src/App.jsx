@@ -9,7 +9,7 @@ function App() {
   return (
     <>
      <header>
-          <img src={clocheLogo} className="logo react animated-logo" alt="Cloche logo"/>
+          {/* <img src={clocheLogo} className="logo react animated-logo" alt="Cloche logo"/> */}
           <NavBar />
      </header>
      <main>
