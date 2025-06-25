@@ -1,0 +1,184 @@
+	{
+  "reservations": [
+    {
+      "id": "4rr6",
+      "member_id": "ed65",
+      "member": "josh",
+      "room": "a",
+      "arrival": "2025-06-25T01:30",
+      "guests": 4,
+      "notes": "vegetarian options",
+      "guest_array": [
+        "dean; rooster; carl; clean dog"
+      ]
+    },
+    {
+      "id": "jos5",
+      "member_id": "3ed5",
+      "member": "dorrie",
+      "room": "a",
+      "arrival": "2025-06-25T02:01",
+      "guests": 1,
+      "notes": "client dinner",
+      "guest_array": [
+        "max; josh; darnell"
+      ]
+    },
+    {
+      "id": "co08",
+      "member_id": "ed65",
+      "member": "josh",
+      "room": "b",
+      "arrival": "2025-03-31T10:00",
+      "guests": 3,
+      "notes": "VIP",
+      "guest_array": [
+        "phil",
+        "dave",
+        "lauren",
+        "josh"
+      ]
+    },
+    {
+      "id": "fla4",
+      "member_id": "2ww2",
+      "member": "abba",
+      "room": "d",
+      "arrival": "2025-04-03T19:45",
+      "guests": 1,
+      "notes": "Kosher",
+      "guest_array": [
+        "jill"
+      ]
+    },
+    {
+      "id": "tr7e",
+      "member_id": "d5tg",
+      "member": "demi",
+      "room": "c",
+      "arrival": "2025-05-27T12:15",
+      "guests": 3,
+      "notes": "Birthday",
+      "guest_array": [
+        "emma",
+        "zeke",
+        "axel"
+      ]
+    },
+    {
+      "id": "dek8",
+      "member_id": "y765",
+      "member": "jill",
+      "room": "d",
+      "arrival": "2025-06-17T18:15",
+      "guests": 1,
+      "notes": "VIP Birthday",
+      "guest_array": [
+        "abba"
+      ]
+    },
+    {
+      "id": "f0cb",
+      "member_id": "d5tg",
+      "member": "demi",
+      "room": "d",
+      "arrival": "2025-07-04T11:15",
+      "guests": 1,
+      "guest_array": "bobbi",
+      "notes": "Brunch"
+    },
+    {
+      "id": "d579",
+      "member_id": "0b49",
+      "member": "frank",
+      "room": "e",
+      "arrival": "2025-08-04T13:13",
+      "guests": 3,
+      "guest_array": [
+        "slater",
+        "boogie",
+        "niceguy"
+      ],
+      "notes": "Shellfish allergy"
+    },
+    {
+      "id": "6527",
+      "member_id": "ed65",
+      "member": "josh",
+      "room": "a",
+      "arrival": "2025-06-25T01:15",
+      "guests": 2,
+      "guest_array": [
+        "DaveLou",
+        "slowy"
+      ],
+      "notes": "Anniversary"
+    },
+    {
+      "id": "7c16",
+      "member_id": "0b49",
+      "member": "frank",
+      "room": "b",
+      "arrival": "2025-06-25T02:04",
+      "guests": 3,
+      "guest_array": [
+        "honey; ratty"
+      ],
+      "notes": "Vegan"
+    },
+    {
+      "id": "b8cc",
+      "member_id": "3ed5",
+      "member": "dorrie",
+      "room": "b",
+      "arrival": "2025-06-25T03:08",
+      "guests": 2,
+      "guest_array": [
+        "josh; demi"
+      ],
+      "notes": "pizza party"
+    }
+  ],
+  "members": [
+    {
+      "id": "r4gt",
+      "member": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "ed65",
+      "member": "josh",
+      "role": "user"
+    },
+    {
+      "id": "3ed5",
+      "member": "dorrie",
+      "role": "user"
+    },
+    {
+      "id": "d5tg",
+      "member": "demi",
+      "role": "user"
+    },
+    {
+      "id": "2ww2",
+      "member": "abba",
+      "role": "user"
+    },
+    {
+      "id": "y765",
+      "member": "jill",
+      "role": "user"
+    },
+    {
+      "id": "0b49",
+      "member": "frank",
+      "role": "user"
+    },
+    {
+      "id": "5f8f",
+      "member": "lucas",
+      "role": "user"
+    }
+  ]
+}
